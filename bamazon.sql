@@ -16,4 +16,4 @@ primary key (id)
 ALTER TABLE products
 MODIFY price DECIMAL(4);
 
-select * from products
+select * from products;
