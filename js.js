@@ -14,6 +14,7 @@ connection.connect(function (err) {
     start();
 });
 
+
 function start() {
     inquirer
         .prompt([
@@ -28,31 +29,43 @@ function start() {
                 message: "How many would you like to purchase?"
             },
 
-        ])
+        ])//will need something to validate user input.
         .then(function (answer) {
             console.log("Updating user product choice\n");
-            var query = connection.query(
-                "UPDATE products SET ? WHERE ?",
-                [
-                    {
-                        id: answer.item
-                    },
-                    {
-                        stock_quantity: answer.count
+            var item = answer.item;
+            var quantity = answer.count;
+            var queryDB = 'SELECT * FROM products WHERE?';
+            connection.query(
+                queryDB, { id: item }, function (err, data) {
+                    if (err) throw err;
+
+                    if (data.length === 0) {
+                        console.log('No ID selected, try again');
+                    } else {
+                        var productArr = data[0];
+
+                        if (quantity <= productArr.stock_quantity) {
+                            console.log('Processing order.....')
+
+                            var updateDBQuery = 'UPDATE products SET stock_quantity = ' + (productArr.stock_quantity - quantity) + 'WHERE item_id = ' + item;
+                            //syntax error @ this  query fix later
+
+                            connection.query(updateDBQuery, function (err, data) {
+                                if (err) throw err;
+                                console.log(' Your order has been placed!')
+                                connection.end();
+                            })
+
+
+                        } else {
+                            console.log('Sorry there isnt enough in stock, please change quanitity and re-order');
+                            start();
+                        }
                     }
-                ],
-                function (err, res) {
-                    console.log(res.affectedRows + " products updated!\n");
-                }
-            );
+                })
 
-            console.log(query.sql);
-        });
+        })
+
 }
-
-
-// UPDATE table_name
-// SET column1 = value1, column2 = value2, ...
-// WHERE condition;
 
 
