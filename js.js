@@ -31,9 +31,10 @@ function start() {
 
         ])//will need something to validate user input.
         .then(function (answer) {
-            console.log("Updating user product choice\n");
             var item = answer.item;
             var quantity = answer.count;
+            console.log(item);
+            console.log(quantity);
             var queryDB = 'SELECT * FROM products WHERE?';
             connection.query(
                 queryDB, { id: item }, function (err, data) {
@@ -43,17 +44,19 @@ function start() {
                         console.log('No ID selected, try again');
                     } else {
                         var productArr = data[0];
+                        console.log(productArr);
 
                         if (quantity <= productArr.stock_quantity) {
                             console.log('Processing order.....')
 
-                            var updateDBQuery = 'UPDATE products SET stock_quantity = ' + (productArr.stock_quantity - quantity) + 'WHERE item_id = ' + item;
-                            //syntax error @ this  query fix later
+            
+                            var updateDBQuery = 'UPDATE products SET stock_quantity = ' + (productArr.stock_quantity - quantity) + ' WHERE id = ' + item;
+
 
                             connection.query(updateDBQuery, function (err, data) {
                                 if (err) throw err;
                                 console.log(' Your order has been placed!')
-                                connection.end();
+                                start();
                             })
 
 
@@ -66,6 +69,9 @@ function start() {
 
         })
 
+     
 }
+
+
 
 
