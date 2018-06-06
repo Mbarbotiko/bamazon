@@ -61,7 +61,7 @@ function start() {
 
 
                         } else {
-                            console.log('Sorry there isnt enough in stock, please change quanitity and re-order');
+                            console.log('Sorry there isnt enough in stock, please change quantity and re-order');
                             displayInventory();
                             start();
                         }
