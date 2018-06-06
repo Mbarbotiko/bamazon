@@ -1,7 +1,7 @@
 {
   "name": "bamazon",
   "version": "1.0.0",
-  "description": "",
+  "description": "* Bamazon is a **Node App with a MySQL Database.**  You will be unable to link to my Bamazon DB I have linked a video of the apps functionality at the bottom of this read me.",
   "main": "js.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Mbarbotiko/bamazon/issues"
   },
-  "homepage": "https://github.com/Mbarbotiko/bamazon#readme"
+  "homepage": "https://github.com/Mbarbotiko/bamazon#readme",
+  "dependencies": {
+    "inquirer": "^6.0.0",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {}
 }
