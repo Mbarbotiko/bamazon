@@ -42,6 +42,7 @@ function start() {
                         console.log('No ID selected, try again');
                     } else {
                         var productArr = data[0];
+                        console.log(productArr);
 
 
                         if (quantity <= productArr.stock_quantity) {

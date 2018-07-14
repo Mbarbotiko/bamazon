@@ -1,9 +1,6 @@
 # Bamazon
 
-
-
-
-### Bamazon Node/ MySQL app:
+### Bamazon 
 * Bamazon is a **Node App with a MySQL Database.**  You will be unable to link to my Bamazon DB I have linked a video of the apps functionality at the bottom of this read me.
 
 * The application on start up will display items in Bamazon's database as a store front with an item ID, Product Name, Department Name , and Price.  The Stock Quantity is listed in the DB but not on the store front.
@@ -14,5 +11,16 @@
 
 * All of the items in the DB will be depleted as the user continues to shop until they reach 0 stock quantity.  The second step to this application is to create an application that handles a managers view to re-stock the store, which will be completed at a later date.
 
+
+## Demo
 [Video of project:](https://drive.google.com/file/d/1dRfkBjcGQ7oKHhpowLm6AbaoYvssZapD/view)
+
+
+## Repo
+[Github](https://github.com/Mbarbotiko/bamazon)
+
+
+##Author(s) credit
+[Portfolio](https://mbarbotiko.github.io/)
+[Github](https://github.com/Mbarbotiko/)
 
